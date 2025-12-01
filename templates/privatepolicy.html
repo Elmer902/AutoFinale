@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Política de Privacidad | SánchezAutoescuela</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/index.css'%}">
+    <style>
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .fade-in {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 1s ease, transform 1s ease;
+      }
+      .fade-in.show {
+        opacity: 1;
+        transform: translateY(0);
+        animation: fadeIn 1s ease-out forwards;
+      }
+      html { scroll-behavior: smooth; }
+      :root{--g1:#0f9d58;--g2:#062c2b;--glass:rgba(255,255,255,0.06)}
+      .glass{backdrop-filter: blur(6px); background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.06)}
+    </style>
+  </head>
+  <body class="bg-gray-800 text-gray-100 antialiased">
+
+    <!-- Navbar (exactly as you like it) -->
+    <header class="fixed w-full bg-white shadow-md z-50 glass text-white">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,var(--g1),#023d2f)">
+            <img src="{% static 'Images/logo.png' %}" alt="Logo">
+          </div>
+          <span class="text-xl font-semibold tracking-tight">SánchezAutoescuela</span>
+        </div>
+        <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
+          <a href="{% url 'home' %}" class="text-green-300 transition">Inicio</a>
+          <a href="{% url 'services' %}" class="hover:text-green-300 transition">Servicios</a>
+          <a href="{% url 'blog' %}" class="hover:text-green-300 transition">consejos o sugerencias</a>
+          <a href="{% url 'faq' %}" class="hover:text-green-300 transition">FAQ</a>
+          <a href="{% url 'about' %}" class="hover:text-green-300 transition">Sobre nosotros</a>
+          <a href="{% url 'driver' %}" class="hover:text-green-300 transition">Licencia de conducir</a>
+          <a href="{% url 'contact' %}" class="px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-200 hover:text-black">Contacto</a>
+        </nav>
+        <button id="menuBtn" class="md:hidden text-gray-900 focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+      <div id="mobileMenu" class="hidden glass z-50 md:hidden text-white p-6 space-y-4 border-t border-gray-200 shadow-md">
+        <a href="{% url 'home' %}" class="block text-green-600">Inicio</a>
+        <a href="{% url 'services' %}" class="block hover:text-green-600">Servicios</a>
+        <a href="{% url 'blog' %}" class="block hover:text-green-600">consejos o sugerencias</a>
+        <a href="{% url 'faq' %}" class="block hover:text-green-600">FAQ</a>
+        <a href="{% url 'about' %}" class="block hover:text-green-600">Sobre nosotros</a>
+        <a href="{% url 'driver' %}" class="block hover:text-green-600">Licencia de conducir</a>
+        <a href="{% url 'contact' %}" class="block bg-green-600 text-white p-3 rounded-md text-center">Contacto</a>
+      </div>
+    </header>
+
+    <!-- FIXED SECTION – NOW VISIBLE ON MOBILE -->
+    <section class="pt-28 md:pt-32 pb-16 px-6">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-bold text-green-300 text-center mb-12 fade-in">
+          Política de Privacidad
+        </h1>
+        <div class="bg-gray-900 bg-opacity-60 rounded-xl p-8 md:p-12 shadow-2xl fade-in delay-2">
+          <p class="text-gray-300 leading-relaxed text-lg">
+            <strong>1. Información que recopilamos</strong><br>
+            Recopilamos datos como tu nombre, DNI, email, teléfono y detalles de matriculación al inscribirte en cursos o solicitar información. Esto es necesario para gestionar tus clases y trámites con la DGT.
+            <br><br>
+            <strong>2. Finalidad del tratamiento</strong><br>
+            Usamos tus datos para matricularte, programar clases teóricas y prácticas, gestionar exámenes ante la DGT, enviar recordatorios y comunicarnos contigo sobre tu formación vial.
+            <br><br>
+            <strong>3. Legitimación</strong><br>
+            El tratamiento de tus datos se basa en la ejecución del contrato de formación y en el cumplimiento de obligaciones legales (DGT, facturación, etc.).
+            <br><br>
+            <strong>4. Destinatarios</strong><br>
+            Tus datos podrán ser comunicados a la DGT y a entidades bancarias para gestión de pagos. No se realizan transferencias internacionales ni cesiones a terceros con fines comerciales.
+            <br><br>
+            <strong>5. Conservación</strong><br>
+            Conservaremos tus datos mientras dure la relación formativa y posteriormente durante los plazos legales exigidos (mínimo 5 años).
+            <br><br>
+            <strong>6. Tus derechos</strong><br>
+            Tienes derecho a acceder, rectificar, suprimir, oponerte, limitar el tratamiento y a la portabilidad de tus datos. Puedes ejercerlos enviando un email a support@sanchezautoescuela.com con copia de tu DNI.
+            <br><br>
+            <strong>7. Cookies</strong><br>
+            Este sitio web utiliza cookies técnicas y analíticas. Puedes consultar nuestra Política de Cookies y configurarlas en cualquier momento.
+            <br><br>
+            <strong>8. Medidas de seguridad</strong><br>
+            Aplicamos medidas técnicas y organizativas adecuadas para proteger tus datos contra accesos no autorizados, pérdida o alteración.
+            <br><br>
+            <strong>9. Actualizaciones</strong><br>
+            Esta política puede modificarse. Los cambios serán publicados en esta página con la fecha de última actualización.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WhatsApp Bubble (unchanged) -->
+    <div class="wa-bubble">
+      <div class="wa-box" id="waBubble">
+        <div class="wa-close" onclick="document.getElementById('waBubble').style.display='none'">×</div>
+        <p class="wa-text">Hola Haz clic aquí para obtener tu licencia de conducir sin examen</p>
+      </div>
+      <div class="wa-icon" onclick="openWhatsApp()">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12c0 2.71 1.11 5.16 2.89 6.93L4 22l3.28-1.72C9.07 21.7 10.47 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm3.5 14.5c-.41 0-.83-.09-1.24-.26l-3.43 1.8 1.83-3.37c-.19-.42-.29-.86-.29-1.33 0-1.93 1.57-3.5 3.5-3.5 1.93 0 3.5 1.57 3.5 3.5s-1.57 3.5-3.5 3.5z"/>
+        </svg>
+      </div>
+    </div>
+
+    <style>
+      .wa-bubble{position:fixed;bottom:20px;right:20px;z-index:9999;animation:fadeIn 0.6s ease-out 3s forwards;opacity:0}
+      .wa-box{background:white;padding:16px 20px;border-radius:18px;box-shadow:0 8px 30px rgba(0,0,0,0.2);max-width:260px;position:relative;margin-bottom:12px;cursor:pointer}
+      .wa-box::after{content:'';position:absolute;bottom:-8px;left:20px;border-left:8px solid transparent;border-right:8px solid transparent;border-top:10px solid white}
+      .wa-text{font-size:16px;color:#333;margin:0}
+      .wa-close{position:absolute;top:-10px;left:-10px;width:30px;height:30px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,0.2);font-size:20px;color:#888;cursor:pointer}
+      .wa-icon{width:60px;height:60px;background:#00bfa5;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(0,0,0,0.2);cursor:pointer}
+      .wa-icon svg{width:34px;height:34px;fill:white}
+      @keyframes fadeIn{to{opacity:1}}
+    </style>
+
+    <script>
+      const yourNumber = "34613644410";
+      function openWhatsApp() {
+        window.open("https://wa.me/" + yourNumber + "?text=Hola%2C%20deseo%20obtener%20mi%20licencia%20de%20conducir%20sin%20curso%20ni%20ex%C3%A1menes.", "_blank");
+        document.getElementById('waBubble').style.display = 'none';
+      }
+      setTimeout(() => {
+        document.getElementById('waBubble').style.opacity = '1';
+      }, 3000);
+    </script>
+
+    <!-- Footer (exactly as you had it) -->
+    <footer class="bg-gray-900 border-t border-gray-700 py-12 px-6 md:px-20 text-gray-300">
+      <div class="grid md:grid-cols-4 gap-10">
+        <div>
+          <h2 class="text-2xl font-bold text-green-400">SánchezAutoescuela</h2>
+          <p class="mt-3 text-gray-400">
+            Aquí tienes la traducción natural, profesional y concisa que queda perfecta en una web de autoescuela en España
+          </p>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold text-green-300 mb-4">enlaces</h3>
+          <ul class="space-y-2">
+            <li><a href="{% url 'home' %}" class="hover:text-green-400">Inicio</a></li>
+            <li><a href="{% url 'services' %}" class="hover:text-green-400">Servicios</a></li>
+            <li><a href="{% url 'blog' %}" class="hover:text-green-400">consejos o sugerencias</a></li>
+            <li><a href="{% url 'faq' %}" class="hover:text-green-400">FAQ</a></li>
+            <li><a href="{% url 'about' %}" class="hover:text-green-400">Sobre nosotros</a></li>
+            <li><a href="{% url 'driver' %}" class="hover:text-green-400">Licencia de conducir</a></li>
+            <li><a href="{% url 'contact' %}" class="hover:text-green-400">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold text-green-300 mb- mb-4">Contacto Us</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li>C. de Josefa Valcárcel, 28, San Blas-Canillejas, 28027 Madrid, España</li>
+            <li>+34613644410</li>
+            <li>support@SánchezAutoescuela.com</li>
+            <li>Mon – Fri: 8:00 AM – 6:00 PM</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold text-green-300 mb-4">Ponte en contacto</h3>
+          <div class="flex space-x-4">
+            <a href="https://www.facebook.com/share/17V7VvFLjH/" class="hover:text-green-400">
+              <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"> <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1 .9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.6l-.4 3h-2.2v7A10 10 0 0 0 22 12"></path></svg>
+            </a>
+            <a href="https://www.instagram.com/sanchezautoescuela?igsh=MXFvZTZlNGdyM3p1Mw==" class="hover:text-green-400">
+              <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"> <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 7.3A2.8 2.8 0 1 1 14.8 12 2.8 2.8 0 0 1 12 14.8zM17.2 6a1.2 1.2 0 1 0 1.2 1.2A1.2 1.2 0 0 0 17.2 6z"/></svg>
+            </a>
+            <a href="https://wa.me/+34613644410" class="hover:text-green-400">
+              <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"> <path d="M20 3.9A9.8 9.8 0 0 0 12 .1 9.9 9.9 0 0 0 2 10a9.8 9.8 0 0 0 1.5 5.2L2 22l7.1-1.9a10 10 0 0 0 3 .5h.1a9.9 9.9 0 0 0 9.9-9.9A9.8 9.8 0 0 0 20 3.9zM12 19.8h-.1a8.5 8.5 0 0 1-4.3-1.2l-.3-.2L5 19l1.3-2.3-.2-.3a8.4 8.4 0 0 1-1.3-4.5A8.5 8.5 0 0 1 12 3.5a8.3 8.3 0 0 1 8.4 8.3A8.5 8.5 0 0 1 12 19.8zm4.3-6.2c-.2-.1-1.4-.7-1.7-.8s-.4-.1-.6.1l-.7.9c-.1.1-.2.2-.4.1s-.8-.3-1.5-.9a6.1 6.1 0 0 1-1.1-1.3c-.2-.3 0-.4.1-.5l.5-.5c.2-.2.2-.3.3-.5s0-.4-.1-.5c-.1-.1-.6-1.4-.8-1.8s-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.4a3.1 3.1 0 0 0-1 2.3c0 1.2.9 2.3 1 2.5s1.9 3.1 4.7 4.3l.7.3c.3.1.7.2.9.1s1-.4 1.2-.8a2.6 2.6 0 0 0 .2-1.4c-.1-.2-.2-.3-.4-.4z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <hr class="border-gray-700 my-8">
+      <div class="flex flex-col md:flex-row justify-between text-gray-400 text-sm">
+        <p>© 2025 SánchezAutoescuela. Todos los derechos reservados.</p>
+        <div class="flex space-x-4 mt-4 md:mt-0">
+          <a href="{% url 'private' %}" class="hover:text-green-400">Política de privacidad</a>
+          <a href="{% url 'terms' %}" class="hover:text-green-400">Términos & condiciones</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      const fadeEls = document.querySelectorAll('.fade-in');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      fadeEls.forEach(el => observer.observe(el));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SánchezAutoescuela — Courses</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+<style>
+  :root { --g1:#0f9d58; --g2:#062c2b; }
+  .glass {
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .btn-primary {
+    background: linear-gradient(90deg, var(--g1), #046f52);
+    color: #fff;
+  }
+  .hero-bg {
+    background-image:
+      linear-gradient(180deg, rgba(6,44,43,0.6), rgba(6,44,43,0.6)),
+      url("https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1600&q=80");
+    background-size: cover;
+    background-position: center;
+  }
+</style>
+  <style>
+    :root{--g1:#0f9d58;--g2:#062c2b;--glass:rgba(255,255,255,0.06)}
+    html{scroll-behavior:smooth}
+    .hero-bg{background-image:
+      linear-gradient(180deg, rgba(6,44,43,.55), rgba(6,44,43,.55)),
+      url('https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1600&q=80'); background-size:cover}
+      .glass{backdrop-filter: blur(6px); background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.06)}
+      .fade-init{opacity:0; transform:translateY(24px); transition:all .9s cubic-bezier(.2,.9,.2,1)}
+      .fade-init.show{opacity:1; transform:none}
+      .btn-primary{background:linear-gradient(90deg,var(--g1),#046f52); color:#fff;}
+  </style>
+</head>
+
+<body class="bg-gray-900 text-gray-100">
+
+<!-- NAVBAR -->
+<header class=" bg-gray-900/80 backdrop-blur-md shadow-md ">
+  <nav class="bg-gray-900 border-b glass fixed w-full z-50 glass top-0 left-0 border-gray-700 p-6 flex justify-between items-center">
+
+    <!-- Brand -->
+          <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,var(--g1),#023d2f)">
+          <img src="{% static 'Images/logo.png' %}" alt="">
+        </div>
+        <span class="text-xl font-semibold tracking-tight">SánchezAutoescuela</span>
+      </div>
+
+    <!-- Desktop Menu -->
+  <ul class="hidden md:flex space-x-6 text-gray-300">
+    <li><a href="{% url 'home' %}" class="hover:text-green-400">Inicio</a></li>
+    <li><a href="{% url 'services' %}" class="hover:text-green-400">Servicios</a></li>
+    <li><a href="{% url 'blog' %}" class="hover:text-green-400">consejos o sugerencias</a></li>
+    <li><a href="{% url 'faq' %}" class="text-green-400 font-semibold">FAQ</a></li>
+    <li><a href="{% url 'about' %}" class="text-green-400 font-semibold">Sobre nosotros</a></li>
+    <li><a href="{% url 'contact' %}" class="hover:text-green-400">Contacto</a></li>
+  </ul>
+
+    <!-- Mobile Menu Button -->
+    <button id="menuBtn" class="md:hidden text-green-400 focus:outline-none">
+      <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor">
+        <path id="menuIconPath" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+
+<div id="mobileMenu" class="hidden z-50 glass fixed w-full md:hidden mt-20 text-white p-6 space-y-4 border-t border-gray-700 shadow-md">
+  <a href="{% url 'home' %}" class="block hover:text-green-400">Inicio</a>
+  <a href="{% url 'services' %}" class="block text-green-400">Servicios</a>
+  <a href="{% url 'blog' %}" class="block hover:text-green-400">consejos o sugerencias</a>
+  <a href="{% url 'faq' %}" class="block hover:text-green-400">FAQ</a>
+  <a href="{% url 'about' %}" class="block hover:text-green-400">Sobre nosotros</a>
+  <a href="{% url 'contact' %}" class="block bg-green-600 p-3 rounded-lg text-center">Contacto</a>
+</div>
+</header>
+
+<!-- Navbar Script -->
+<script>
+  const menuBtn = document.getElementById("menuBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+  const menuIconPath = document.getElementById("menuIconPath");
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+
+    if (mobileMenu.classList.contains("hidden")) {
+      menuIconPath.setAttribute("d", "M4 6h16M4 12h16M4 18h16"); // Hamburger
+    } else {
+      menuIconPath.setAttribute("d", "M6 18L18 6M6 6l12 12"); // X
+    }
+  });
+</script>
+
+
+</div>
+</header>
+
+<!-- HERO -->
+<section class="hero-bg py-52 flex items-center justify-center text-center px-6">
+  <div>
+    <h1 class="text-5xl font-extrabold text-white drop-shadow-lg">
+      Nuestros Cursos de Conducción
+    </h1>
+    <p class="mt-4 text-gray-200 max-w-2xl mx-auto">Elige entre nuestros cursos diseñados por profesionales para conductores principiantes, intermedios y avanzados.
+    </p>
+  </div>
+</section>
+
+<!-- Courses Grid -->
+<section class="py-20 px-6 md:px-20">
+  <h2 class="text-3xl font-bold text-green-300 mb-10 text-center">Elige tu curso</h2>
+
+  <div class="grid md:grid-cols-3 gap-10">
+
+    <!-- Course 1 -->
+    <div class="glass rounded-2xl p-6 shadow-xl">
+      <img src="{% static 'Images/Article.jpg' %}"
+           class="rounded-xl mb-6" alt="Beginner Lessons">
+      <h3 class="text-xl font-semibold text-green-300">Clases de Conducción para Principiantes</h3>
+      <p class="text-gray-300 mt-3">
+        Clases de iniciación para alumnos que parten de cero. Incluye manejo de mandos, normas básicas de circulación y desarrollo de confianza al volante.
+      </p>
+      <a title="tey" href="{% url 'contact' %}" class="block mt-5 text-center btn-primary rounded-lg py-2">Matricúlate ahora</a>
+    </div>
+
+    <!-- Course 2 -->
+    <div class="glass rounded-2xl p-6 shadow-xl">
+      <img src="{% static 'Images/group2.jpg' %}"
+           class="rounded-xl mb-6" alt="Intermediate Driving">
+      <h3 class="text-xl font-semibold text-green-300">Curso de Perfeccionamiento e Intermedio</h3>
+      <p class="text-gray-300 mt-3">
+        Ideal para conductores que quieren pulir su técnica, ganar confianza y dominar el vehículo. Clases prácticas 100 % adaptadas a tu nivel y necesidades.
+      </p>
+      <a title="tey" href="{% url 'contact' %}" class="block mt-5 text-center btn-primary rounded-lg py-2">Empieza hoy mismo</a>
+    </div>
+
+    <!-- Course 3 -->
+    <div class="glass rounded-2xl p-6 shadow-xl">
+      <img src="{% static 'Images/article3.webp' %}"
+           class="rounded-xl mb-6" alt="Test Prep">
+      <h3 class="text-xl font-semibold text-green-300">Preparación para el Examen Práctico</h3>
+      <p class="text-gray-300 mt-3">
+        Simulacros reales de examen, técnicas específicas para el día D y situaciones avanzadas de circulación diseñadas para que apruebes a la primera.
+      </p>
+      <a title="tey" href="{% url 'contact' %}" class="block mt-5 text-center btn-primary rounded-lg py-2">Reserva tu Clase</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Extra Advantages -->
+<section class="py-20 bg-gray-800 px-6 md:px-20">
+  <h2 class="text-3xl font-bold text-green-300 mb-10 text-center">Por qué formarte con nosotros?</h2>
+
+  <div class="grid md:grid-cols-3 gap-10">
+
+    <div class="glass rounded-2xl p-6 text-center">
+      <h3 class="text-xl font-semibold text-green-300 mb-3">Profesores Titulados</h3>
+      <p class="text-gray-300">Expertos altamente cualificados con años de experiencia real en carretera.</p>
+    </div>
+
+    <div class="glass rounded-2xl p-6 text-center">
+      <h3 class="text-xl font-semibold text-green-300 mb-3">Horarios Flexibles</h3>
+      <p class="text-gray-300">Elige tus propios horarios que se adapten a tu estilo de vida</p>
+    </div>
+
+    <div class="glass rounded-2xl p-6 text-center">
+      <h3 class="text-xl font-semibold text-green-300 mb-3">Vehículos modernos</h3>
+      <p class="text-gray-300">Aprende a conducir en coches modernos, seguros, limpios y completamente equipados</p>
+    </div>
+
+  </div>
+</section>
+ <!-- VEHICLES USED -->
+  <section class="py-20 px-8 bg-gray-900 border-t border-b border-gray-800">
+    <h2 class="text-4xl font-bold text-green-400 text-center mb-10">Vehículos utilizados para la formación</h2>
+
+    <div class="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+
+      <!-- Car 1 -->
+      <div class="bg-gray-950 border border-gray-800 p-6 rounded-xl">
+        <img src="{% static 'Images/vehicle.jpg' %}"
+             class="rounded-lg mb-4" alt="Car">
+        <h3 class="text-xl font-semibold text-green-300">Clases prácticas en Toyota Corolla</h3>
+        <p class="text-gray-400 mt-2">Manejo suave e ideal para alumnos principiantes e intermedios.</p>
+      </div>
+
+      <!-- Car 2 -->
+      <div class="bg-gray-950 border border-gray-800 p-6 rounded-xl">
+        <img src="{% static 'Images/vehicle.jpg' %}"
+             class="rounded-lg mb-4" alt="Car">
+        <h3 class="text-xl font-semibold text-green-300">Hyundai Elantra</h3>
+        <p class="text-gray-400 mt-2">Excelente fiabilidad, ideal para preparar el examen y clases avanzadas</p>
+      </div>
+
+      <!-- Car 3 -->
+      <div class="bg-gray-950 border border-gray-800 p-6 rounded-xl">
+        <img src="{% static 'Images/vehicle.jpg' %}"
+             class="rounded-lg mb-4" alt="Car">
+        <h3 class="text-xl font-semibold text-green-300">Clases prácticas en Toyota Yaris</h3>
+        <p class="text-gray-400 mt-2">Compacto, fácil de maniobrar y perfecto para practicar en ciudad .</p>
+      </div>
+
+    </div>
+  </section>
+
+<!-- WhatsApp Floating Bubble -->
+<div class=" wa-bubble" >
+
+  <!-- Message box -->
+
+  <div class="wa-box" id="waBubble">
+     <!-- Close X -->
+  <div class="wa-close" onclick="document.getElementById('waBubble').style.display='none'">×</div>
+    <p class="wa-text">"¿obtener sin curso ni exámenes?"</p>
+  </div>
+
+  <!-- Green circle -->
+  <div class="wa-icon" onclick="openWhatsApp()">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 2C6.48 2 2 6.48 2 12c0 2.71 1.11 5.16 2.89 6.93L4 22l3.28-1.72C9.07 21.7 10.47 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm3.5 14.5c-.41 0-.83-.09-1.24-.26l-3.43 1.8 1.83-3.37c-.19-.42-.29-.86-.29-1.33 0-1.93 1.57-3.5 3.5-3.5 1.93 0 3.5 1.57 3.5 3.5s-1.57 3.5-3.5 3.5z"/>
+    </svg>
+  </div>
+</div>
+<style>
+  /* Floating WhatsApp-style bubble */
+  .wa-bubble {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    animation: fadeIn 0.6s ease-out 3s forwards;
+    opacity: 0;
+  }
+
+  /* The actual message box */
+  .wa-box {
+    background: white;
+    padding: 16px 20px;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    max-width: 260px;
+    position: relative;
+    margin-bottom: 12px;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  .wa-box::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid white;
+  }
+
+  .wa-text {
+    font-size: 16px;
+    color: #333;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+  }
+
+  /* Close button (small X) */
+  .wa-close {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    font-size: 20px;
+    color: #888;
+    cursor: pointer;
+  }
+
+  /* Green circle with icon */
+  .wa-icon {
+    width: 60px;
+    height: 60px;
+    background: #00bfa5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    cursor: pointer;
+  }
+
+  .wa-icon svg {
+    width: 34px;
+    height: 34px;
+    fill: white;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+</style>
+<script>
+// Change this to your WhatsApp number (country code + number, no +)
+const yourNumber = "34613644410";   // ← PUT YOUR NUMBER HERE
+
+function openWhatsApp() {
+  window.open("https://wa.me/" + 34613644410 + "?text=Hola%2C%20deseo%20obtener%20mi%20licencia%20de%20conducir%20sin%20curso%20ni%20ex%C3%A1menes.", "_blank");
+  // Optional: hide bubble after clicking
+  document.getElementById('waBubble').style.display = 'none';
+}
+
+// Auto-show after 3 seconds
+setTimeout(() => {
+  document.getElementById('waBubble').style.opacity = '1';
+}, 3000);
+</script>
+<!-- FOOTER (same for all pages) -->
+<footer class="bg-gray-900 border-t border-gray-700 py-12 px-6 md:px-20 text-gray-300">
+
+  <div class="grid md:grid-cols-4 gap-10">
+
+    <!-- Brand -->
+    <div>
+      <h2 class="text-2xl font-bold text-green-400">SánchezAutoescuela</h2>
+      <p class="mt-3 text-gray-400">
+        Escuela de conducción profesional comprometida con una conducción segura y confiada.
+      </p>
+    </div>
+
+    <!-- Links -->
+    <div>
+      <h3 class="text-xl font-semibold text-green-300 mb-4">Links</h3>
+      <ul class="space-y-2">
+        <li><a title="tef" href="{% url 'home' %}" class="hover:text-green-400"></a>Inicio</li>
+        <li><a title="tef" href="{% url 'services' %}" class="text-green-400">Servicios</a></li>
+        <li><a title="tef" href="{% url 'blog' %}" class="hover:text-green-400">consejos o sugerencias</a></li>
+        <li><a title="tef" href="{% url 'faq' %}" class="hover:text-green-400">FAQ</a></li>
+        <li><a title="tef" href="{% url 'about' %}" class="hover:text-green-400">Sobre nosotros </a></li>
+        <li><a title="tef" href="{% url 'contact' %}" class="hover:text-green-400">Contacto</a></li>
+      </ul>
+    </div>
+    <!-- Contact -->
+<div>
+  <h3 class="text-xl font-semibold text-green-300 mb-4">Contacta con nosotros</h3>
+  <ul class="space-y-2 text-gray-400">
+    <li>Address   C. de Josefa Valcárcel, 28, San Blas-Canillejas, 28027 Madrid, España</li>
+    <li>+34613644410</li>
+    <li>support@SánchezAutoescuela.com</li>
+    <li>Mon – Fri: 8:00 AM – 6:00 PM</li>
+  </ul>
+</div>
+
+
+    <!-- Socials -->
+ <div>
+        <h3 class="text-xl font-semibold text-green-300 mb-4">Síguenos</h3>
+        <div class="flex space-x-4">
+
+          <!-- Facebook -->
+          <a title="tef" href="https://www.facebook.com/share/17V7VvFLjH/" class="hover:text-green-400">
+            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1 .9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.6l-.4 3h-2.2v7A10 10 0 0 0 22 12"></path>
+            </svg>
+          </a>
+
+          <!-- Instagram -->
+          <a title="tef" href="https://www.instagram.com/sanchezautoescuela?igsh=MXFvZTZlNGdyM3p1Mw==" class="hover:text-green-400">
+            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 7.3A2.8 2.8 0 1 1 14.8 12 2.8 2.8 0 0 1 12 14.8zM17.2 6a1.2 1.2 0 1 0 1.2 1.2A1.2 1.2 0 0 0 17.2 6z"/>
+            </svg>
+          </a>
+
+          <!-- WhatsApp -->
+          <a title="tef" href="https://wa.me/+34613644410" class="hover:text-green-400">
+            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20 3.9A9.8 9.8 0 0 0 12 .1 9.9 9.9 0 0 0 2 10a9.8 9.8 0 0 0 1.5 5.2L2 22l7.1-1.9a10 10 0 0 0 3  .5h.1a9.9 9.9 0 0 0 9.9-9.9A9.8 9.8 0 0 0 20 3.9zM12 19.8h-.1a8.5 8.5 0 0 1-4.3-1.2l-.3-.2L5 19l1.3-2.3-.2-.3a8.4 8.4 0 0 1-1.3-4.5A8.5 8.5 0 0 1 12 3.5a8.3 8.3 0 0 1 8.4 8.3A8.5 8.5 0 0 1 12 19.8zm4.3-6.2c-.2-.1-1.4-.7-1.7-.8s-.4-.1-.6.1l-.7.9c-.1.1-.2.2-.4.1s-.8-.3-1.5-.9a6.1 6.1 0 0 1-1.1-1.3c-.2-.3 0-.4.1-.5l.5-.5c.2-.2.2-.3.3-.5s0-.4-.1-.5c-.1-.1-.6-1.4-.8-1.8s-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.4a3.1 3.1 0 0 0-1 2.3c0 1.2.9 2.3 1 2.5s1.9 3.1 4.7 4.3l.7.3c.3.1.7.2.9.1s1-.4 1.2-.8a2.6 2.6 0 0 0 .2-1.4c-.1-.2-.2-.3-.4-.4z"/>
+            </svg>
+          </a>
+
+          <!-- YouTube -->
+          <a title="tef" href="#" class="hover:text-green-400">
+            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M21.8 8.2s-.2-1.5-.8-2.2c-.8-.9-1.7-.9-2.1-1C15.8 4.7 12 4.7 12 4.7h-.1s-3.8 0-6.8.3c-.4.1-1.3.1-2.1 1-.6.6-.8 2.2-.8 2.2S2 9.9 2 11.6v1.8c0 1.7.2 3.4.2 3.4s.2 1.5.8 2.2c.8.9 1.8.9 2.3 1 1.7.2 6.7.3 6.7.3s3.8 0 6.8-.3c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.2.8-2.2s.2-1.7.2-3.4v-1.8c0-1.7-.2-3.4-.2-3.4zM10 15.3v-6l5 3-5 3z"/>
+            </svg>
+          </a>
+
+        </div>
+      </div>
+
+
+  </div>
+
+  <hr class="border-gray-700 my-8">
+
+  <div class="flex flex-col md:flex-row justify-between text-gray-400 text-sm">
+    <p>© 2025 SánchezAutoescuela. Todos los derechos reservados.</p>
+    <div class="flex space-x-4 mt-4 md:mt-0">
+      <a title="tef" href="{% url 'private' %}" class="hover:text-green-400">Política de privacidad</a>
+      <a title="tef" href="{% url 'terms' %}" class="hover:text-green-400">Términos & condicioness</a>
+    </div>
+  </div>
+
+</footer>
+
+</body>
+</html>

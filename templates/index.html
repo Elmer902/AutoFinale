@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SánchezAutoescuela</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <style>
+      /* Fade-in animation */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .fade-in {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 1s ease, transform 1s ease;
+      }
+
+      .fade-in.show {
+        opacity: 1;
+        transform: translateY(0);
+        animation: fadeIn 1s ease-out forwards;
+      }
+
+      /* Staggered delay classes */
+      .delay-1 { transition-delay: 0.2s; }
+      .delay-2 { transition-delay: 0.4s; }
+      .delay-3 { transition-delay: 0.6s; }
+
+      html {
+        scroll-behavior: smooth;
+      }
+          .whatsapp-btn img {
+      width: 52px;
+      height: 52px;
+    }
+        .popup-close {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      font-size: 28px;
+      font-weight: 300;
+      color: red;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+    }
+    </style>
+  </head>
+
+  <body class="bg-gray-800 text-gray-100 antialiased">
+
+    <!-- Navbar -->
+    <header class="fixed w-full bg-white shadow-md z-50 glass text-white">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,var(--g1),#023d2f)">
+          <img alt="img" src="{% static 'Images/logo.png'%}" alt="">
+        </div>
+        <span class="text-xl font-semibold tracking-tight">SánchezAutoescuela</span>
+      </div>
+    <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
+      <a title="tef" href="{% url 'home' %}" class="text-green-300 transition">Inicio</a>
+      <a title="tef" href="{% url 'services' %}" class="hover:text-green-300 transition">Servicios</a>
+      <a title="tef" href="{% url 'blog' %}" class="hover:text-green-300 transition">consejos o sugerencias</a>
+      <a title="tef" href="{% url 'faq' %}" class="hover:text-green-300 transition">FAQ</a>
+      <a title="tef" href="{% url 'about' %}" class="hover:text-green-300 transition">Sobre nosotros</a>
+      <a title="tef" href="{% url 'driver' %}" class="hover:text-green-300 transition">Licencia de conducir</a>
+      <a title="tef" href="{% url 'contact' %}" class="px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-200 hover:text-black">Contacto</a>
+    </nav>
+
+
+
+    <!-- MOBILE MENU BUTTON -->
+    <button id="menuBtn" class="md:hidden text-gray-900 focus:outline-none" >
+      <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+
+  </div>
+  <!-- MOBILE DROPDOWN MENU -->
+    <div id="mobileMenu" class="hidden glass md:hidden text-white p-6 space-y-4 border-t border-gray-200 shadow-md">
+      <a title="tef" href="{% url 'home' %}" class="block text-green-600">Inicio</a>
+      <a title="tef" href="{% url 'services' %}" class="block hover:text-green-600">Servicios</a>
+      <a title="tef" href="{% url 'blog' %}" class="block hover:text-green-600">consejos o sugerencias</a>
+      <a title="tef" href="{% url 'faq' %}" class="block hover:text-green-600">FAQ</a>
+      <a title="tef" href="{% url 'about' %}" class="block hover:text-green-600">Sobre nosotros</a>
+      <a title="tef" href="{% url 'driver' %}" class="block hover:text-green-600">Licencia de conducir</a>
+      <a title="tef" href="{% url 'contact' %}" class="block bg-green-600 text-white p-3 rounded-md text-center">Contacto</a>
+    </div>
+  </header>
+
+
+  <section class="hero-bg h-screen flex items-center" id="home">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight fade-init text-gray-900" data-delay="50">Domina la carretera — Conduce con confianza</h1>
+          <p class="mt-6 text-gray-200 max-w-xl fade-init" data-delay="50">
+            internacional diseñado para que apruebes rápido
+          </p>
+          <div class="mt-8 flex gap-4 fade-init" data-delay="400">
+            <a title="tef" href="#services" class="btn-primary px-6 py-3 rounded-md shadow-lg">Ver servicios</a>
+            <a title="tef" href="{% url 'contact' %}" class="px-6 py-3 rounded-md border border-gray-300 hover:bg-gray-300 hover:text-black">Ponte en contacto</a>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="glass rounded-2xl p-6 shadow-2xl fade-init" data-delay="200">
+            <h3 class="font-semibold text-lg mb-3">¿Por qué elegir Autoescuela Sánchez?</h3>
+            <ul class="text-gray-300 text-sm space-y-2">
+              <li>• Profesores titulados & vehículos modernos</li>
+              <li>• Altas tasas de aprobados & clases flexibles</li>
+              <li>• Exámenes de prueba y correcciones personalizadas</li>
+            </ul>
+            <div class="mt-4 flex gap-3">
+              <a title="tef" href="https://sedeclave.dgt.gob.es/WEB_NOTP_CONSULTA/consultaNota.faces" class="text-sm px-3 py-2 rounded-md border border-gray-300 text-white">Resultados del examen</a>
+              <a title="tef" href="{% url 'contact' %}" class="text-sm px-3 py-2 rounded-md border border-gray-300 text-white">Área del alumno</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- About Section -->
+
+    <section id="about" class="md:py-20 py-10  container mx-auto px-6 md:px-20 fade-in">
+      <div class="md:grid grid-cols-2 gap-12 ">
+        <img alt="img" src="{% static 'Images/Article.jpg' %}"
+             alt="Driving lessons" class="rounded-2xl shadow-lg fade-in delay-1">
+        <div class="fade-in delay-2">
+          <span class="text-4xl font-bold text-green-200 mb-4">Sobre Autoescuela Sánchez</span>
+          <p class="text-gray-100 leading-relaxed mb-4">Autoescuela Sánchez es una de las autoescuelas modernas más consolidadas y de mayor confianza. Ofrecemos una formación premium para alumnos de todos los niveles. Nuestros profesores titulados imparten una enseñanza tranquila, profesional y enfocada en resultados, diseñada para que apruebes rápido y conduzcas con total seguridad.
+          </p>
+          <p class="text-gray-400 leading-relaxed">
+            Utilizamos técnicas de enseñanza avanzadas, planes de clases estructurados y simulaciones reales de conducción para que cada sesión sea útil, práctica y motivadora.excepcional.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+
+    <section id="services" class="py-16 bg-gray-800 fade-in md:px-10 text-center items-center justify-center">
+      <div class="w-full  mx-auto px-6">
+        <span class="text-3xl md:text-start text-center font-bold mb-10 fade-init text-green-200" data-delay="0">Nuestros Servicios</span>
+        <div class="grid md:grid-cols-3 gap-8">
+
+       <div class="bg-gray-900 glass rounded-2xl p-6 text-center fade-init transition duration-150 transform hover:scale-110" data-delay="120">
+        <h4 class="font-semibold text-green-300">Clases para Principiantes</h4>
+        <img alt="img" src="{% static 'Images/1.jpg' %}" alt="Beginner" class="rounded-xl py-8 mx-auto block">
+        <p class="mt-3 text-sm text-gray-300">
+          Formación paso a paso para conductores noveles / primeros conductores.
+        </p>
+       </div>
+
+      <div class="bg-gray-900 glass rounded-2xl p-6 text-center fade-init transition duration-150 transform hover:scale-110" data-delay="120">
+        <h4 class="font-semibold text-green-300">Clases de Perfeccionamiento</h4>
+        <img alt="img" src="{% static 'Images/group2.jpg' %}" alt="Beginner" class="rounded-xl py-8 mx-auto block">
+        <p class="mt-3 text-sm text-gray-300">Dominando la carretera.</p>
+      </div>
+
+      <div class="bg-gray-900 glass rounded-2xl p-6 text-center fade-init transition duration-150 transform hover:scale-110" data-delay="120">
+        <h4 class="font-semibold text-green-300">Clases Avanzadas</h4>
+        <img alt="img" src="{% static 'Images/group.jpg' %}" alt="Beginner" class="rounded-xl py-8 mx-auto block">
+        <p class="mt-3 text-sm text-gray-300">Conduce tu sueño</p>
+      </div>
+
+        </div>
+      </div>
+    </section>
+
+      <hr class="w-1/2 h-1 mx-auto my-10 border-gray-600"/>
+
+    <!-- why us -->
+     <section id="#whyus" class="md:py-16 py-10 mb-5 w-full text-center container mx-auto px-6 md:px-20 fade-in">
+      <h1 class="text-4xl font-bold text-green-200 mb-8">¿Por qué elegirnos?</h1>
+
+        <div class="grid md:grid-cols-4 gap-10">
+          <div class="bg-gray-700 text-white rounded-2xl shadow-md p-6 hover:shadow-xl transition fade-in delay-2">
+            <img alt="img" src="{% static 'Images/t5.jpg' %}"
+                 alt="Beginner Course" class="rounded-xl mb-4">
+
+            <p class="">Cientos de profesores titulados y acceso a nuestra app líder del sector</p>
+          </div>
+          <div class="bg-gray-700 text-white rounded-2xl shadow-md p-6 hover:shadow-xl transition fade-in delay-3">
+            <img alt="img" src="{% static 'Images/IMG-20251123-WA0020 (1).jpg' %}"
+                 alt="Refresher Course" class="rounded-xl mb-4">
+
+            <p class="">Mejor autoescuela nacional del año 2024</p>
+          </div>
+          <div class="bg-gray-700 text-white rounded-2xl shadow-md p-6 hover:shadow-xl transition fade-in delay-4">
+            <img alt="img" src="{% static 'Images/2.jpg' %}"
+                 alt="Test Preparation" class="rounded-xl mb-4">
+
+            <p class="">Confianza total y fiabilidad – política de devolución sin complicaciones</p>
+          </div>
+          <div class="bg-gray-700 text-white rounded-2xl shadow-md p-6 hover:shadow-xl transition fade-in delay-5">
+            <img alt="img" src="{% static 'Images/car5.jpg' %}"
+                 alt="Test Preparation" class="rounded-xl mb-4">
+
+            <p class="">Obtén tu curso de forma segura a través de la web de RED o en nuestro centro»Obtén tu curso de forma segura a través de la web de RED o en nuestro centro»</p>
+          </div>
+        </div>
+
+     </section>
+
+
+  <!-- TESTIMONIALS -->
+<section class="w-full py-20 bg-black" id="testimonialCarousel fade-in" >
+  <p class="text-4xl font-bold text-center text-white mb-12">
+    Testimonios
+  </p>
+
+  <div class="relative max-w-3xl mx-auto px-4 fade-in">
+
+    <!-- Carousel Wrapper with height -->
+    <div  class="relative overflow-hidden h-72 flex-col items-center justify-center">
+
+      <!-- Testimonial Items -->
+      <div class="carousel-item opacity-100 transition-opacity duration-700 absolute inset-0 flex items-center justify-center px-6 text-center">
+        <div class="bg-white/10 backdrop-blur-lg text-white p-8 rounded-2xl shadow-xl">
+          <div class="w-full items-center justify-center flex flex-col left-auto right-auto">
+          <img alt="img" src="{% static 'Images/t1.jpg' %}" alt="Laura García" class="md:w-32 md:h-32 w-24 h-24 rounded-full">
+          <img alt="img" src= "{% static 'Images/ratings/rating-30.png' %}" class="w-20">
+          </div>
+          <p class="text-lg italic">"Los profesores fueron súper pacientes y muy profesionales. ¡Aprobé el examen de conducir a la primera!"</p>
+          <h3 class="mt-4 font-bold text-green-400">—Alejandro Fernández</h3>
+        </div>
+      </div>
+      <div class="carousel-item opacity-100 transition-opacity duration-700 absolute inset-0 flex items-center justify-center px-6 text-center">
+        <div class="bg-white/10 backdrop-blur-lg text-white p-8 rounded-2xl shadow-xl">
+          <div class="w-full items-center justify-center flex flex-col left-auto right-auto">
+          <img alt="img" src="{% static 'Images/t2.jpg' %}" alt="Laura García" class="md:w-32 md:h-32 w-24 h-24 rounded-full">
+          <img alt="img" src= "{% static 'Images/ratings/rating-50.png' %}" class="w-20">
+          </div>
+          <p class="text-lg italic">"Los profesores fueron súper pacientes y muy profesionales. ¡Aprobé el examen de conducir a la primera!"</p>
+          <h3 class="mt-4 font-bold text-green-400">— José Martínez</h3>
+        </div>
+      </div>
+      <div class="carousel-item opacity-100 transition-opacity duration-700 absolute inset-0 flex items-center justify-center px-6 text-center">
+        <div class="bg-white/10 backdrop-blur-lg text-white p-8 rounded-2xl shadow-xl">
+          <div class="w-full items-center justify-center flex flex-col left-auto right-auto">
+          <img alt="img" src="{% static 'Images/t3.jpg' %}" alt="Mateo Rodríguez" class="md:w-32 md:h-32 w-24 h-24 rounded-full">
+          <img alt="img" src= "{% static 'Images/ratings/rating-40.png' %}" class="w-20">
+          </div>
+          <p class="text-lg italic">"Los profesores fueron súper pacientes y muy profesionales. ¡Aprobé el examen de conducir a la primera!"</p>
+          <h3 class="mt-4 font-bold text-green-400">— Mateo Rodríguez</h3>
+        </div>
+      </div>
+
+      <div class="carousel-item opacity-0 transition-opacity duration-700 absolute inset-0 flex items-center justify-center px-6 text-center">
+        <div class="bg-white/10 backdrop-blur-lg text-white p-8 rounded-2xl shadow-xl">
+          <div class="w-full items-center justify-center flex flex-col left-auto right-auto">
+          <img alt="img" src="{% static 'Images/t4.jpg' %}" alt="Laura García" class="md:w-32 md:h-32 w-24 h-24 rounded-full">
+          <img alt="img" src= "{% static 'Images/ratings/rating-50.png' %}" class="w-20">
+          </div>
+          <p class="text-lg italic">"La mejor experiencia en una autoescuela de mi vida. Las clases fueron claras, prácticas y muy amenas."</p>
+          <h3 class="mt-4 font-bold text-green-400">— Danilo Sánchez</h3>
+        </div>
+      </div>
+            <div class="carousel-item opacity-0 transition-opacity duration-700 absolute inset-0 flex items-center justify-center px-6 text-center">
+        <div class="bg-white/10 backdrop-blur-lg text-white p-8 rounded-2xl shadow-xl">
+          <div class="w-full items-center justify-center flex flex-col left-auto right-auto">
+          <img alt="img" src="{% static 'Images/t5.jpg' %}" alt="Laura García" class="md:w-32 md:h-32 w-24 h-24 rounded-full">
+          <img alt="img" src= "{% static 'Images/ratings/rating-40.png' %}" class="w-20">
+          </div>
+          <p class="text-lg italic">"Otras versiones naturales y perfectas para reseñas"</p>
+          <h3 class="mt-4 font-bold text-green-400">— Pablo Sánchez</h3>
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="flex justify-center mt-10 gap-6 fade-in">
+      <button id="prevBtn" class="px-4 py-2 bg-green-600 text-black font-semibold rounded-full hover:bg-green-500 transition">
+        Anterior
+      </button>
+      <button id="nextBtn" class="px-4 py-2 bg-green-600 text-black font-semibold rounded-full hover:bg-green-500 transition">
+        Siguiente
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  const items = document.querySelectorAll(".carousel-item");
+  let index = 0;
+
+  function showItem(i) {
+    items.forEach((item, idx) => {
+      item.style.opacity = idx === i ? "1" : "0";
+    });
+  }
+
+  document.getElementById("nextBtn").onclick = () => {
+    index = (index + 1) % items.length;
+    showItem(index);
+  };
+
+  document.getElementById("prevBtn").onclick = () => {
+    index = (index - 1 + items.length) % items.length;
+    showItem(index);
+  };
+
+  setInterval(() => {
+    index = (index + 1) % items.length;
+    showItem(index);
+  }, 3000);
+</script>
+
+ <!-- Fade-in Script -->
+
+    <script>
+      const fadeEls = document.querySelectorAll('.fade-in');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target); // prevents re-triggering
+          }
+        });
+      }, { threshold: 0.5 }); // triggers when 50% visible
+
+      fadeEls.forEach(el => observer.observe(el));
+    </script>
+  </body>
+
+  <!-- {% url 'home' %} -->
+
+  <style>
+    :root{--g1:#0f9d58;--g2:#062c2b;--glass:rgba(255,255,255,0.06)}
+    html{scroll-behavior:smooth}
+    .hero-bg{background-image:
+      linear-gradient(180deg, rgba(6,44,43,.55), rgba(6,44,43,.55)),
+      url('https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1600&q=80'); background-size:cover}
+      .glass{backdrop-filter: blur(6px); background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.06)}
+      .fade-init{opacity:0; transform:translateY(24px); transition:all .9s cubic-bezier(.2,.9,.2,1)}
+      .fade-init.show{opacity:1; transform:none}
+      .btn-primary{background:linear-gradient(90deg,var(--g1),#046f52); color:#fff;}
+  </style>
+<style>
+  /* Floating WhatsApp-style bubble */
+  .wa-bubble {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    animation: fadeIn 0.6s ease-out 3s forwards;
+    opacity: 0;
+  }
+
+  /* The actual message box */
+  .wa-box {
+    background: white;
+    padding: 16px 20px;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    max-width: 260px;
+    position: relative;
+    margin-bottom: 12px;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  .wa-box::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid white;
+  }
+
+  .wa-text {
+    font-size: 16px;
+    color: #333;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+  }
+
+  /* Close button (small X) */
+  .wa-close {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    font-size: 20px;
+    color: #888;
+    cursor: pointer;
+  }
+
+  /* Green circle with icon */
+  .wa-icon {
+    width: 60px;
+    height: 60px;
+    background: #00bfa5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    cursor: pointer;
+  }
+
+  .wa-icon svg {
+    width: 34px;
+    height: 34px;
+    fill: white;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+</style>
+
+
+<!-- WhatsApp Floating Bubble -->
+<div class=" wa-bubble" >
+
+  <!-- Message box -->
+
+  <div class="wa-box" id="waBubble">
+     <!-- Close X -->
+  <div class="wa-close" onclick="document.getElementById('waBubble').style.display='none'">×</div>
+    <p class="wa-text">Hola 👋
+        Haz clic aquí para obtener tu licencia de conducir sin examen
+    </p>
+  </div>
+
+  <!-- Green circle -->
+  <div class="wa-icon" onclick="openWhatsApp()">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 2C6.48 2 2 6.48 2 12c0 2.71 1.11 5.16 2.89 6.93L4 22l3.28-1.72C9.07 21.7 10.47 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm3.5 14.5c-.41 0-.83-.09-1.24-.26l-3.43 1.8 1.83-3.37c-.19-.42-.29-.86-.29-1.33 0-1.93 1.57-3.5 3.5-3.5 1.93 0 3.5 1.57 3.5 3.5s-1.57 3.5-3.5 3.5z"/>
+    </svg>
+  </div>
+</div>
+
+<script>
+// Change this to your WhatsApp number (country code + number, no +)
+const yourNumber = "34613644410 ";   // ← PUT YOUR NUMBER HERE
+
+function openWhatsApp() {
+  window.open("https://wa.me/" + 34613644410 + "?text=Hola%2C%20deseo%20obtener%20mi%20licencia%20de%20conducir%20sin%20curso%20ni%20ex%C3%A1menes.", "_blank");
+  // Optional: hide bubble after clicking
+  document.getElementById('waBubble').style.display = 'none';
+}
+
+// Auto-show after 3 seconds
+setTimeout(() => {
+  document.getElementById('waBubble').style.opacity = '1';
+}, 3000);
+</script>
+<!-- FOOTER (same for all pages) -->
+<footer class="bg-gray-900 border-t border-gray-700 py-12 px-6 md:px-20 text-gray-300">
+
+  <div class="grid md:grid-cols-4 gap-10">
+
+    <!-- Brand -->
+    <div>
+      <span class="text-2xl font-bold text-green-400">SánchezAutoescuela</span>
+      <p class="mt-3 text-gray-400">
+        Autoescuela profesional comprometida con una conducción segura y con confianza
+      </p>
+    </div>
+
+    <!-- Links -->
+    <div>
+      <h3 class="text-xl font-semibold text-green-300 mb-4">enlaces</h3>
+      <ul class="space-y-2">
+        <li><a title="tef" href="{% url 'home' %}" class="hover:text-green-400 text-green-400"></a>Inicio</li>
+        <li><a title="tef" href="{% url 'services' %}" class="hover:text-green-400">Servicios</a></li>
+        <li><a title="tef" href="{% url 'blog' %}" class="hover:text-green-400">consejos o sugerencias</a></li>
+        <li><a title="tef" href="{% url 'faq' %}" class="hover:text-green-400">FAQ</a></li>
+        <li><a title="tef" href="{% url 'about' %}" class="hover:text-green-400">Sobre nosotros </a></li>
+        <li><a title="tef" href="{% url 'driver' %}" class="hover:text-green-400">Licencia de conducir </a></li>
+        <li><a title="tef" href="{% url 'contact' %}" class="hover:text-green-400">Contacto</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+<div>
+  <h3 class="text-xl font-semibold text-green-300 mb-4">Contacta con nosotros</h3>
+  <ul class="space-y-2 text-gray-400">
+    <li>C. de Josefa Valcárcel, 28, San Blas-Canillejas, 28027 Madrid, España</li>
+    <li>support@SánchezAutoescuela.com</li>
+  </ul>
+</div>
+
+
+    <!-- Socials -->
+ <div>
+        <h3 class="text-xl font-semibold text-green-300 mb-4">Síguenos</h3>
+        <div class="flex space-x-4">
+
+          <!-- Facebook -->
+          <a title="tef" href="https://www.facebook.com/share/17V7VvFLjH/" class="hover:text-green-400">
+            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1 .9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.6l-.4 3h-2.2v7A10 10 0 0 0 22 12"></path>
+            </svg>
+          </a>
+
+          <!-- Instagram -->
+          <a title="tef" href="https://www.instagram.com/sanchezautoescuela?igsh=MXFvZTZlNGdyM3p1Mw==" class="hover:text-green-400">
+            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 7.3A2.8 2.8 0 1 1 14.8 12 2.8 2.8 0 0 1 12 14.8zM17.2 6a1.2 1.2 0 1 0 1.2 1.2A1.2 1.2 0 0 0 17.2 6z"/>
+            </svg>
+          </a>
+
+          <!-- WhatsApp -->
+          <a title="tef" href="https://wa.me/+34613644410" class="hover:text-green-400">
+            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20 3.9A9.8 9.8 0 0 0 12 .1 9.9 9.9 0 0 0 2 10a9.8 9.8 0 0 0 1.5 5.2L2 22l7.1-1.9a10 10 0 0 0 3  .5h.1a9.9 9.9 0 0 0 9.9-9.9A9.8 9.8 0 0 0 20 3.9zM12 19.8h-.1a8.5 8.5 0 0 1-4.3-1.2l-.3-.2L5 19l1.3-2.3-.2-.3a8.4 8.4 0 0 1-1.3-4.5A8.5 8.5 0 0 1 12 3.5a8.3 8.3 0 0 1 8.4 8.3A8.5 8.5 0 0 1 12 19.8zm4.3-6.2c-.2-.1-1.4-.7-1.7-.8s-.4-.1-.6.1l-.7.9c-.1.1-.2.2-.4.1s-.8-.3-1.5-.9a6.1 6.1 0 0 1-1.1-1.3c-.2-.3 0-.4.1-.5l.5-.5c.2-.2.2-.3.3-.5s0-.4-.1-.5c-.1-.1-.6-1.4-.8-1.8s-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.4a3.1 3.1 0 0 0-1 2.3c0 1.2.9 2.3 1 2.5s1.9 3.1 4.7 4.3l.7.3c.3.1.7.2.9.1s1-.4 1.2-.8a2.6 2.6 0 0 0 .2-1.4c-.1-.2-.2-.3-.4-.4z"/>
+            </svg>
+          </a>
+
+          <!-- YouTube -->
+          <a title="tef" href="#" class="hover:text-green-400">
+            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M21.8 8.2s-.2-1.5-.8-2.2c-.8-.9-1.7-.9-2.1-1C15.8 4.7 12 4.7 12 4.7h-.1s-3.8 0-6.8.3c-.4.1-1.3.1-2.1 1-.6.6-.8 2.2-.8 2.2S2 9.9 2 11.6v1.8c0 1.7.2 3.4.2 3.4s.2 1.5.8 2.2c.8.9 1.8.9 2.3 1 1.7.2 6.7.3 6.7.3s3.8 0 6.8-.3c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.2.8-2.2s.2-1.7.2-3.4v-1.8c0-1.7-.2-3.4-.2-3.4zM10 15.3v-6l5 3-5 3z"/>
+            </svg>
+          </a>
+
+        </div>
+      </div>
+
+
+  </div>
+
+  <hr class="border-gray-700 my-8">
+
+  <div class="flex flex-col md:flex-row justify-between text-gray-400 text-sm">
+    <p>© 2025 SánchezAutoescuela. Todos los derechos reservados.</p>
+    <div class="flex space-x-4 mt-4 md:mt-0">
+      <a title="tef" href="{% url 'private' %}" class="hover:text-green-400">Política de privacidad</a>
+      <a title="tef" href="{% url 'terms' %}" class="hover:text-green-400">Términos & condiciones</a>
+    </div>
+  </div>
+
+</footer>
+
+
+  <script>
+    // simple staggered reveal
+    window.addEventListener('load', ()=> {
+      document.querySelectorAll('.fade-init').forEach((el,i)=>{
+        const d = el.dataset.delay ? Number(el.dataset.delay) : i*120;
+        setTimeout(()=> el.classList.add('show'), d+80);
+      });
+      // intersection-based reveals for sections further down
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting) e.target.classList.add('show');
+        });
+      }, {threshold:0.28});
+      document.querySelectorAll('section').forEach(s=> io.observe(s));
+    });
+  </script>
+  <script>
+  const menuBtn = document.getElementById("menuBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+</script>
+</body>
+
+
+</html>
